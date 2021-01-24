@@ -90,6 +90,7 @@ console.log(add);
 
 const smileys = ["😎", "🤓", "🥳"];
 let otherArr = smileys.slice(0, 2); // 2
+console.log(smileys);
 console.log(otherArr);
 // using a negative number in slice
 let otherArr2 = smileys.slice(-2);
@@ -129,3 +130,58 @@ const findGreatest = (arr, num) => {
 };
 
 console.log(findGreatest([3, 4, 12, 44], 3));
+
+let originalArray = [
+  "JavaScript",
+  "will",
+  "turn",
+  "your",
+  "dreams",
+  "into",
+  "Reality",
+];
+let shallowCopyOg = originalArray.slice(-1); //
+
+console.log(shallowCopyOg);
+console.log(originalArray);
+
+// Dictionary.
+//  Create a function that takes an initial string and an array of words, and returns a filtered array of the words that start with the same letters as the initial string.
+// Notes:
+// If none of the words match, return an empty array.
+// Keep the filtered array in the same relative order as the original array of words.
+// Examples:
+// dictionary(“bu”, [“button”, “breakfast”, “border”]) ➞ [“button”]
+// dictionary(“tri”, [“triplet”, “tries”, “trip”, “piano”, “tree”]) ➞ [“triplet”, “tries”, trip”]
+// dictionary(“beau”, [“pastry”, “delicious”, “name”, “boring”]) ➞ []
+
+const dictionary = (str, arr) => {
+  let result = [];
+  let userInput = str.toLowerCase();
+  for (let i = 0; i < arr.length; i++) {
+    let currentValue = arr[i].toLowerCase();
+
+    if (currentValue.includes(userInput)) {
+      result.push(currentValue);
+    }
+  }
+  return result;
+};
+console.log(dictionary("bo", ["cool", "Bool", "nool", "doOOol"]));
+console.log(dictionary("bolll", ["cool", "nool", "doOOol"]));
+// other way to do it :)
+const dictionary2 = (str, arr) => {
+  let result = [];
+  let userInput = str.toLowerCase();
+  for (let i = 0; i < arr.length; i++) {
+    let currentValue = arr[i].toLowerCase();
+    let shortStr = currentValue.substring(0, userInput.length);
+    if (shortStr == userInput) {
+      result.push(currentValue);
+    }
+  }
+  return result;
+};
+
+console.log(dictionary2("bo", ["cool", "Bool", "nool", "doOOol"])); // [ 'bool' ]
+console.log(dictionary2("bo", ["ooBol", "nool", "doOOol"])); // empty array
